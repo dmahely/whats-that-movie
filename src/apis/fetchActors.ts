@@ -1,4 +1,4 @@
-type Actor = {
+export type Actor = {
     id: string,
     name: string,
 }
