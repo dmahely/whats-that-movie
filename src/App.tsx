@@ -16,7 +16,7 @@ const App = () => {
       <VStack display-name="app-vstack" className="App">
         <Description />
         {selectedActors.length > 1 && <button>Find out the movie name!</button>}
-        <Selections selectedActors={selectedActors} />
+        <Selections selectedActors={selectedActors} setSelectedActors={setSelectedActors} />
         <InputForm setActors={setActors} />
         <Suggestions actors={actors} setSelectedActors={setSelectedActors} selectedActors={selectedActors} />
       </VStack>
