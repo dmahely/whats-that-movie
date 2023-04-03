@@ -8,9 +8,13 @@ type SuggestionsProps = {
 }
 
 const Suggestions: React.FC<SuggestionsProps> = ({ actors, setSelectedActors, selectedActors }) => {
+    const handleOnClick = (index: number) => {
+        setSelectedActors([...selectedActors, actors[index]])
+    }
+
     return <div>
-        {actors.map((actor) =>
-            (<div><li>{actor.name}</li> <button onClick={() => setSelectedActors([...selectedActors, actor])}>Select</button></div>))}
+        {actors.map((actor, index) =>
+            (<div><li>{actor.name}</li> <button onClick={() => handleOnClick(index)}>Select</button></div>))}
     </div>
 }
 
