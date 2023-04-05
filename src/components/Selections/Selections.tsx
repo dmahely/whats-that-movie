@@ -5,10 +5,11 @@ import {
     TagCloseButton,
     Flex
 } from '@chakra-ui/react'
+import { ActorWithMovies } from '../../App'
 
 type SelectionsProps = {
-    selectedActors: Actor[]
-    setSelectedActors: React.Dispatch<React.SetStateAction<Actor[]>>
+    selectedActors: ActorWithMovies[]
+    setSelectedActors: React.Dispatch<React.SetStateAction<ActorWithMovies[]>>
 }
 
 const Selections: React.FC<SelectionsProps> = ({ selectedActors, setSelectedActors }) => {
@@ -21,7 +22,7 @@ const Selections: React.FC<SelectionsProps> = ({ selectedActors, setSelectedActo
     }
 
     return <Flex display-name="selections-flex" gap={1}>
-        {selectedActors.map((actor) => {
+        {selectedActors.map((selection) => {
             return <Tag
                 size='lg'
                 key='lg'
@@ -29,8 +30,8 @@ const Selections: React.FC<SelectionsProps> = ({ selectedActors, setSelectedActo
                 variant='solid'
                 colorScheme='blue'
             >
-                <TagLabel>{actor.name}</TagLabel>
-                <TagCloseButton onClick={() => removeSelection(actor.id)} />
+                <TagLabel>{selection.actor.name}</TagLabel>
+                <TagCloseButton onClick={() => removeSelection(selection.id)} />
             </Tag>
         })}
     </Flex>

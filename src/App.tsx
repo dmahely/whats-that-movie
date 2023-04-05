@@ -8,9 +8,22 @@ import { Selections } from './components/Selections';
 import { ChakraProvider, VStack, Center, Flex } from '@chakra-ui/react'
 import { Footer } from './components/Footer';
 
+export type Movie = {
+  id: string
+  posterPath: string
+  title: string
+  releaseDate: string
+}
+
+export type ActorWithMovies = {
+  id: string
+  actor: Actor
+  movies: Movie[]
+}
+
 const App = () => {
   const [actors, setActors] = useState<Array<Actor>>([])
-  const [selectedActors, setSelectedActors] = useState<Array<Actor>>([])
+  const [selectedActors, setSelectedActors] = useState<Array<ActorWithMovies>>([])
   const [inputValue, setInputValue] = useState<string>('')
 
   return (
