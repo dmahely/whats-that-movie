@@ -25,7 +25,7 @@ const Selections: React.FC<SelectionsProps> = ({ selectedActors, setSelectedActo
         {selectedActors.map((selection) => {
             return <Tag
                 size='lg'
-                key='lg'
+                key={selection.id}
                 borderRadius='full'
                 variant='solid'
                 colorScheme='blue'

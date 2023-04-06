@@ -2,6 +2,7 @@ import { Actor } from '../../apis/fetchActors'
 import React from "react"
 import { fetchMovieCredits } from '../../apis/fetchMovieCredits'
 import { ActorWithMovies } from '../../App'
+import { nanoid } from 'nanoid'
 
 type SuggestionsProps = {
     actors: Actor[]
@@ -14,8 +15,7 @@ type SuggestionsProps = {
 const Suggestions: React.FC<SuggestionsProps> = ({ actors, setActors, setSelectedActors, selectedActors, setInputValue }) => {
     const handleOnClick = async (index: number) => {
         const movies = await fetchMovieCredits(actors[index].id)
-        // todo use random id
-        const newSelection: ActorWithMovies = { id: "hardcoded-id", actor: actors[index], movies }
+        const newSelection: ActorWithMovies = { id: nanoid(), actor: actors[index], movies }
         setSelectedActors([...selectedActors, newSelection])
         clearInput()
     }
@@ -27,7 +27,7 @@ const Suggestions: React.FC<SuggestionsProps> = ({ actors, setActors, setSelecte
 
     return <div>
         {actors.map((actor, index) =>
-            (<div><li>{actor.name}</li> <button onClick={() => handleOnClick(index)}>Select</button></div>))}
+            (<div key={actor.id}><li>{actor.name}</li> <button onClick={() => handleOnClick(index)}>Select</button></div>))}
     </div>
 }
 
