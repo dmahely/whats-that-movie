@@ -1,25 +1,24 @@
 import { ActorWithMovies, Movie } from "../App"
 
 const findCommonMovies = (actorsWithMovies: ActorWithMovies[]) => {
-    console.log(actorsWithMovies)
-    const allMovieTitles = actorsWithMovies.flatMap((actor) => {
-        return actor.movies.map((movie) => movie.title)
+    const allMoviesArr = actorsWithMovies.flatMap((actor) => {
+        return actor.movies.map((movie) => movie)
     })
-    console.log(allMovieTitles)
 
-    const moviesSet = new Set(allMovieTitles)
-    if (moviesSet.size === allMovieTitles.length) {
+    const movieIdsSet = new Set(allMoviesArr.map(movie => movie.id))
+    if (movieIdsSet.size === allMoviesArr.length) {
         return []
     }
 
-    const commonMovies = allMovieTitles.filter(title => {
-        if (moviesSet.has(title)) {
-            moviesSet.delete(title);
+    const commonMovieIds = allMoviesArr.map(movie => movie.id).filter(id => {
+        if (movieIdsSet.has(id)) {
+            movieIdsSet.delete(id)
         } else {
-            return title;
+            return id
         }
-    });
-    console.log(commonMovies)
+    })
+
+    const commonMovies = allMoviesArr.filter(movie => commonMovieIds.includes(movie.id))
 
     return commonMovies
 }
