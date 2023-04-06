@@ -1,5 +1,5 @@
 import { Input, Flex } from "@chakra-ui/react"
-import React from "react"
+import React, { useEffect } from "react"
 import { Actor } from '../../apis/fetchActors'
 import { fetchActors } from "../../apis/fetchActors"
 
@@ -13,13 +13,22 @@ const InputForm: React.FC<InputFormProps> = ({ setActors, inputValue, setInputVa
     const handleOnChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
         const inputText = event.target.value
         setInputValue(inputText)
-
-        if (inputText.length > 3) {
-            // todo: use debounce
-            const actorsResult = await fetchActors(inputText)
-            setActors(actorsResult)
-        }
     }
+
+    const getActorResult = async (inputText: string) => {
+        const actorsResult = await fetchActors(inputText)
+        setActors(actorsResult)
+    }
+
+    useEffect(() => {
+        if (inputValue.length > 3) {
+            const getData = setTimeout(() => {
+                getActorResult(inputValue)
+            }, 1000)
+
+            return () => clearTimeout(getData)
+        }
+    }, [inputValue])
 
     return (
         <Flex display-name="input-flex">
