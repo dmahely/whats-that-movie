@@ -8,7 +8,12 @@ const fetchActors = async (input: string) => {
     const results = data.results
 
     const actors = results.filter((person: any) => {
-        return (person.known_for_department === "Acting" && !person.adult) as unknown as Actor
+        if (person.known_for_department === "Acting" && !person.adult) {
+            return person
+        }
+    }).map((person: any) => {
+        const actor: Actor = { id: person.id, name: person.name }
+        return actor
     })
 
     return actors
