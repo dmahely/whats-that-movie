@@ -7,6 +7,7 @@ import { Suggestions } from './components/Suggestions';
 import { Selections } from './components/Selections';
 import { ChakraProvider, VStack, Center, Flex } from '@chakra-ui/react'
 import { Footer } from './components/Footer';
+import { findCommonMovies } from './utils/findCommonMovies';
 
 export type Movie = {
   id: string
@@ -31,7 +32,7 @@ const App = () => {
       <Flex display-name="app-container-flex" flexDir="column" w="100%">
         <VStack display-name="app-vstack" className="App" minH="100vh">
           <Description />
-          {selectedActors.length > 1 && <button>Find out the movie name!</button>}
+          {selectedActors.length > 1 && <button onClick={() => findCommonMovies(selectedActors)}>Find out the movie name!</button>}
           <Selections selectedActors={selectedActors} setSelectedActors={setSelectedActors} />
           <InputForm inputValue={inputValue} setInputValue={setInputValue} setActors={setActors} />
           <Suggestions actors={actors} setSelectedActors={setSelectedActors} selectedActors={selectedActors} setActors={setActors} setInputValue={setInputValue} />
