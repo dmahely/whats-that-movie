@@ -7,7 +7,7 @@ import { Suggestions } from './components/Suggestions';
 import { Selections } from './components/Selections';
 import { ChakraProvider, VStack, Center, Flex } from '@chakra-ui/react'
 import { Footer } from './components/Footer';
-import { ResultButton } from './components/ResultButton/ResultButton';
+import { ResultButton } from './components/ResultButton';
 
 export type Movie = {
   id: string
