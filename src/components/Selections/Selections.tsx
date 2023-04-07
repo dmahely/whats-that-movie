@@ -1,4 +1,3 @@
-import { Actor } from '../../apis/fetchActors'
 import {
     Tag,
     TagLabel,
