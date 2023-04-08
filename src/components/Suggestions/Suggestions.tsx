@@ -5,6 +5,7 @@ import { ActorWithMovies } from '../../App'
 import { nanoid } from 'nanoid'
 import { HStack, VStack, Text, Image } from '@chakra-ui/react'
 import './Suggestions.css'
+import { getFullPhotoPath } from '../../utils/getFullPhotoPath'
 
 type SuggestionsProps = {
     actors: Actor[]
@@ -30,7 +31,7 @@ const Suggestions: React.FC<SuggestionsProps> = ({ actors, setActors, setSelecte
     return <VStack spacing="0" alignItems="start" w="250px">
         {actors.map((actor, index) =>
         (<HStack className="actor-suggestion" cursor="pointer" borderRadius="10px" p="2" w="100%" onClick={() => handleOnClick(index)} key={actor.id}>
-            <Image boxSize="25px" src="https://via.placeholder.com/25" fallbackSrc="https://via.placeholder.com/25" />
+            <Image boxSize="30px" src={getFullPhotoPath(actor.photo)} fallbackSrc="https://via.placeholder.com/30" />
             <Text>{actor.name}</Text>
         </HStack>))}
     </VStack>
