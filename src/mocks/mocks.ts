@@ -1,21 +1,3 @@
-import { Actor } from "../apis/fetchActors";
-
-export const anActor: Actor = {
-    id: '1234',
-    name: 'Kerry Washington',
-}
-
-export const aListOfActors: Actor[] = [
-    {
-        id: '1234',
-        name: 'Kerry Washington',
-    },
-    {
-        id: '5678',
-        name: 'Rebel Wilson',
-    }
-]
-
 export const personSearchResponse = {
     "page": 1,
     "results": [
