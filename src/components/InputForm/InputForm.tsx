@@ -28,6 +28,9 @@ const InputForm: React.FC<InputFormProps> = ({ setActors, inputValue, setInputVa
 
             return () => clearTimeout(getData)
         }
+        if (inputValue.length < 1) {
+            setActors([])
+        }
     }, [inputValue])
 
     return (
