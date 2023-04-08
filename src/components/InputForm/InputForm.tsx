@@ -32,7 +32,7 @@ const InputForm: React.FC<InputFormProps> = ({ setActors, inputValue, setInputVa
 
     return (
         <Flex display-name="input-flex">
-            <Input placeholder="Enter an actor's name" value={inputValue} onChange={handleOnChange} />
+            <Input w="250px" placeholder="Enter an actor's name" value={inputValue} onChange={handleOnChange} />
         </Flex>)
 }
 

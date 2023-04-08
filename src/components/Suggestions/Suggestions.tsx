@@ -3,6 +3,8 @@ import React from "react"
 import { fetchMovieCredits } from '../../apis/fetchMovieCredits'
 import { ActorWithMovies } from '../../App'
 import { nanoid } from 'nanoid'
+import { HStack, VStack, Text, Image } from '@chakra-ui/react'
+import './Suggestions.css'
 
 type SuggestionsProps = {
     actors: Actor[]
@@ -25,10 +27,13 @@ const Suggestions: React.FC<SuggestionsProps> = ({ actors, setActors, setSelecte
         setInputValue('')
     }
 
-    return <div>
+    return <VStack spacing="0" alignItems="start" w="250px">
         {actors.map((actor, index) =>
-            (<div key={actor.id}><li>{actor.name}</li> <button onClick={() => handleOnClick(index)}>Select</button></div>))}
-    </div>
+        (<HStack className="actor-suggestion" cursor="pointer" borderRadius="10px" p="2" w="100%" onClick={() => handleOnClick(index)} key={actor.id}>
+            <Image boxSize="25px" src="https://via.placeholder.com/25" fallbackSrc="https://via.placeholder.com/25" />
+            <Text>{actor.name}</Text>
+        </HStack>))}
+    </VStack>
 }
 
 export { Suggestions }
