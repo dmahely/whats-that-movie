@@ -9,5 +9,5 @@ export const handlers = [
     }),
     rest.get(`${baseURL}/person/:personId/movie_credit`, (req, res, ctx) => {
         return res(ctx.json(personMovieCreditsResponse))
-    })
+    }),
 ]

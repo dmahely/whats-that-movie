@@ -1,2 +1,2 @@
-import InputForm from "./InputForm"
+import InputForm from './InputForm'
 export { InputForm }

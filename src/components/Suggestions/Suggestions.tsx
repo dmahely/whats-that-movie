@@ -1,5 +1,5 @@
 import { Actor } from '../../apis/fetchActors'
-import React from "react"
+import React from 'react'
 import { fetchMovieCredits } from '../../apis/fetchMovieCredits'
 import { ActorWithMovies } from '../../App'
 import { nanoid } from 'nanoid'
@@ -15,10 +15,20 @@ type SuggestionsProps = {
     setInputValue: React.Dispatch<React.SetStateAction<string>>
 }
 
-const Suggestions: React.FC<SuggestionsProps> = ({ actors, setActors, setSelectedActors, selectedActors, setInputValue }) => {
+const Suggestions: React.FC<SuggestionsProps> = ({
+    actors,
+    setActors,
+    setSelectedActors,
+    selectedActors,
+    setInputValue,
+}) => {
     const handleOnClick = async (index: number) => {
         const movies = await fetchMovieCredits(actors[index].id)
-        const newSelection: ActorWithMovies = { id: nanoid(), actor: actors[index], movies }
+        const newSelection: ActorWithMovies = {
+            id: nanoid(),
+            actor: actors[index],
+            movies,
+        }
         setSelectedActors([...selectedActors, newSelection])
         clearInput()
     }
@@ -28,13 +38,28 @@ const Suggestions: React.FC<SuggestionsProps> = ({ actors, setActors, setSelecte
         setInputValue('')
     }
 
-    return <VStack spacing="0" alignItems="start" w="250px">
-        {actors.map((actor, index) =>
-        (<HStack className="actor-suggestion" cursor="pointer" borderRadius="10px" p="2" w="100%" onClick={() => handleOnClick(index)} key={actor.id}>
-            <Image boxSize="30px" src={getFullPhotoPath(actor.photo)} fallbackSrc="https://via.placeholder.com/30" />
-            <Text>{actor.name}</Text>
-        </HStack>))}
-    </VStack>
+    return (
+        <VStack spacing="0" alignItems="start" w="250px">
+            {actors.map((actor, index) => (
+                <HStack
+                    className="actor-suggestion"
+                    cursor="pointer"
+                    borderRadius="10px"
+                    p="2"
+                    w="100%"
+                    onClick={() => handleOnClick(index)}
+                    key={actor.id}
+                >
+                    <Image
+                        boxSize="30px"
+                        src={getFullPhotoPath(actor.photo)}
+                        fallbackSrc="https://via.placeholder.com/30"
+                    />
+                    <Text>{actor.name}</Text>
+                </HStack>
+            ))}
+        </VStack>
+    )
 }
 
 export { Suggestions }

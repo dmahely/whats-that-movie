@@ -1,9 +1,4 @@
-import {
-    Tag,
-    TagLabel,
-    TagCloseButton,
-    Flex
-} from '@chakra-ui/react'
+import { Tag, TagLabel, TagCloseButton, Flex } from '@chakra-ui/react'
 import { ActorWithMovies } from '../../App'
 
 type SelectionsProps = {
@@ -11,7 +6,10 @@ type SelectionsProps = {
     setSelectedActors: React.Dispatch<React.SetStateAction<ActorWithMovies[]>>
 }
 
-const Selections: React.FC<SelectionsProps> = ({ selectedActors, setSelectedActors }) => {
+const Selections: React.FC<SelectionsProps> = ({
+    selectedActors,
+    setSelectedActors,
+}) => {
     const removeSelection = (actorId: string) => {
         const index = selectedActors.findIndex((actor) => actor.id === actorId)
 
@@ -20,20 +18,26 @@ const Selections: React.FC<SelectionsProps> = ({ selectedActors, setSelectedActo
         setSelectedActors(updatedSelectedActors)
     }
 
-    return <Flex display-name="selections-flex" gap={1}>
-        {selectedActors.map((selection) => {
-            return <Tag
-                size='lg'
-                key={selection.id}
-                borderRadius='full'
-                variant='solid'
-                colorScheme='blue'
-            >
-                <TagLabel>{selection.actor.name}</TagLabel>
-                <TagCloseButton onClick={() => removeSelection(selection.id)} />
-            </Tag>
-        })}
-    </Flex>
+    return (
+        <Flex display-name="selections-flex" gap={1}>
+            {selectedActors.map((selection) => {
+                return (
+                    <Tag
+                        size="lg"
+                        key={selection.id}
+                        borderRadius="full"
+                        variant="solid"
+                        colorScheme="blue"
+                    >
+                        <TagLabel>{selection.actor.name}</TagLabel>
+                        <TagCloseButton
+                            onClick={() => removeSelection(selection.id)}
+                        />
+                    </Tag>
+                )
+            })}
+        </Flex>
+    )
 }
 
 export { Selections }

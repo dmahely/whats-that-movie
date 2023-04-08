@@ -1,2 +1,2 @@
-import { ResultButton } from "./ResultButton";
+import { ResultButton } from './ResultButton'
 export { ResultButton }

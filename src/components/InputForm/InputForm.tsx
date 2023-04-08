@@ -1,7 +1,7 @@
-import { Input, Flex } from "@chakra-ui/react"
-import React, { useEffect } from "react"
+import { Input, Flex } from '@chakra-ui/react'
+import React, { useEffect } from 'react'
 import { Actor } from '../../apis/fetchActors'
-import { fetchActors } from "../../apis/fetchActors"
+import { fetchActors } from '../../apis/fetchActors'
 
 type InputFormProps = {
     setActors: React.Dispatch<React.SetStateAction<Actor[]>>
@@ -9,8 +9,14 @@ type InputFormProps = {
     setInputValue: React.Dispatch<React.SetStateAction<string>>
 }
 
-const InputForm: React.FC<InputFormProps> = ({ setActors, inputValue, setInputValue }) => {
-    const handleOnChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+const InputForm: React.FC<InputFormProps> = ({
+    setActors,
+    inputValue,
+    setInputValue,
+}) => {
+    const handleOnChange = async (
+        event: React.ChangeEvent<HTMLInputElement>
+    ) => {
         const inputText = event.target.value
         setInputValue(inputText)
     }
@@ -35,8 +41,14 @@ const InputForm: React.FC<InputFormProps> = ({ setActors, inputValue, setInputVa
 
     return (
         <Flex display-name="input-flex">
-            <Input w="250px" placeholder="Enter an actor's name" value={inputValue} onChange={handleOnChange} />
-        </Flex>)
+            <Input
+                w="250px"
+                placeholder="Enter an actor's name"
+                value={inputValue}
+                onChange={handleOnChange}
+            />
+        </Flex>
+    )
 }
 
 export default InputForm
