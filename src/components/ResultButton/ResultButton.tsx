@@ -1,16 +1,18 @@
 import { Box, Button } from '@chakra-ui/react';
-import { ActorWithMovies, Movie } from '../../App';
+import { ActorWithMovies, AppState, Movie } from '../../App';
 import { findCommonMovies } from '../../utils/findCommonMovies';
 
 type ResultButtonProps = {
     selectedActors: ActorWithMovies[]
     setCommonMovies: React.Dispatch<React.SetStateAction<Array<Movie>>>
+    setAppState: React.Dispatch<React.SetStateAction<AppState>>
 }
 
-const ResultButton: React.FC<ResultButtonProps> = ({ selectedActors, setCommonMovies }) => {
+const ResultButton: React.FC<ResultButtonProps> = ({ selectedActors, setCommonMovies, setAppState }) => {
     const handleOnClick = () => {
         const movies = findCommonMovies(selectedActors)
         setCommonMovies(movies)
+        setAppState(AppState.RESULT)
     }
     return (
         <Box>
