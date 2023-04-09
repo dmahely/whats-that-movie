@@ -1,8 +1,7 @@
-const getFullPhotoPath = (photoPath: string) => {
+const getFullPhotoPath = (path: string, size: string) => {
     const baseURL = 'https://image.tmdb.org/t/p'
-    const photoSize = 'w45'
 
-    return `${baseURL}/${photoSize}/${photoPath}`
+    return `${baseURL}/${size}/${path}`
 }
 
 export { getFullPhotoPath }

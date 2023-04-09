@@ -71,7 +71,10 @@ const App = () => {
                         </VStack>
                     )}
                     {appState === AppState.RESULT && commonMovies.length && (
-                        <Result commonMovies={commonMovies} />
+                        <Result
+                            commonMovies={commonMovies}
+                            selectedActors={selectedActors}
+                        />
                     )}
                 </VStack>
                 <Center display-name="footer-container">

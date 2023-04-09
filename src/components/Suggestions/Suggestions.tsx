@@ -6,6 +6,7 @@ import { nanoid } from 'nanoid'
 import { HStack, VStack, Text, Image } from '@chakra-ui/react'
 import './Suggestions.css'
 import { getFullPhotoPath } from '../../utils/getFullPhotoPath'
+import { actorPhotoSize } from '../../utils/photoSizes'
 
 type SuggestionsProps = {
     actors: Actor[]
@@ -52,7 +53,8 @@ const Suggestions: React.FC<SuggestionsProps> = ({
                 >
                     <Image
                         boxSize="30px"
-                        src={getFullPhotoPath(actor.photo)}
+                        src={getFullPhotoPath(actor.photo, actorPhotoSize)}
+                        alt={`${actor.name}`}
                         fallbackSrc="https://via.placeholder.com/30"
                     />
                     <Text>{actor.name}</Text>

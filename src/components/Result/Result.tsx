@@ -1,24 +1,62 @@
-import { Flex, Text } from '@chakra-ui/react'
-import { Movie } from '../../App'
+import { HStack, Image, Text, VStack } from '@chakra-ui/react'
+import { ActorWithMovies, Movie } from '../../App'
+import { getFullPhotoPath } from '../../utils/getFullPhotoPath'
+import { moviePhotoSize } from '../../utils/photoSizes'
 
 type ResultProps = {
     commonMovies: Movie[]
+    selectedActors: ActorWithMovies[]
 }
 
-const Result: React.FC<ResultProps> = ({ commonMovies }) => {
-    const latestMovie = commonMovies.sort(
+const Result: React.FC<ResultProps> = ({ commonMovies, selectedActors }) => {
+    commonMovies.sort(
         (a, b) => Date.parse(b.releaseDate) - Date.parse(a.releaseDate)
-    )[0]
-    const latestMovieYear = latestMovie.releaseDate.substring(0, 4)
+    )
+
+    const actorNames = selectedActors
+        .map(({ actor }) => actor.name)
+        .reduce(
+            (a, b, i, array) =>
+                a +
+                (i < array.length - 1
+                    ? ', '
+                    : array.length > 2
+                    ? ', and '
+                    : ' and ') +
+                b
+        )
 
     return (
-        <Flex display-name="results-flex">
+        <VStack spacing="2" display-name="results-flex">
             <Text>
-                The selected actors have {commonMovies.length} movies in common!
-                Their latest movie together was {latestMovie.title} which came
-                out in {latestMovieYear}
+                {actorNames} have {commonMovies.length} movies in common!
             </Text>
-        </Flex>
+            <HStack
+                flexWrap="wrap"
+                justifyContent="center"
+                spacing="1"
+                display-name="movie-results-vstack"
+            >
+                {commonMovies.map((movie) => {
+                    const { id, posterPath, title, releaseDate } = movie
+                    return (
+                        <VStack display-name="movie-vstack" key={id}>
+                            <Image
+                                boxSize="250px"
+                                src={getFullPhotoPath(
+                                    posterPath,
+                                    moviePhotoSize
+                                )}
+                                alt={`${title} poster`}
+                            />
+                            <Text>
+                                {title} ({releaseDate.substring(0, 4)})
+                            </Text>
+                        </VStack>
+                    )
+                })}
+            </HStack>
+        </VStack>
     )
 }
 

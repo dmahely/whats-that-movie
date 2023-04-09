@@ -1,4 +1,4 @@
-import { Heading, VStack, Flex, Text, Image, Highlight } from '@chakra-ui/react'
+import { VStack, Flex, Text, Image, Highlight } from '@chakra-ui/react'
 import image from '../../assets/movie_night.svg'
 
 const Description = () => {
@@ -7,7 +7,7 @@ const Description = () => {
             <Flex gap={4} flexDir="column" w="100%" alignItems="center">
                 <Image
                     alt="Movie night"
-                    boxSize="250px"
+                    boxSize="150px"
                     className="hero-image"
                     src={image}
                 />

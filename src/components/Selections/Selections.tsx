@@ -27,7 +27,7 @@ const Selections: React.FC<SelectionsProps> = ({
                         key={selection.id}
                         borderRadius="full"
                         variant="solid"
-                        colorScheme="blue"
+                        colorScheme="blackAlpha"
                     >
                         <TagLabel>{selection.actor.name}</TagLabel>
                         <TagCloseButton
