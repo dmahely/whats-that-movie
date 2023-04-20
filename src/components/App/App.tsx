@@ -55,6 +55,9 @@ const App = () => {
                         <Result
                             commonMovies={commonMovies}
                             selectedActors={selectedActors}
+                            setSelectedActors={setSelectedActors}
+                            setAppState={setAppState}
+                            setCommonMovies={setCommonMovies}
                         />
                     )}
                 </VStack>

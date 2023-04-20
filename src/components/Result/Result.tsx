@@ -1,14 +1,26 @@
 import { Image, SimpleGrid, Text, VStack } from '@chakra-ui/react'
-import { ActorWithMovies, Movie } from '../../types/types'
+import { ActorWithMovies, Movie, AppState } from '../../types/types'
 import { getFullPhotoPath } from '../../utils/getFullPhotoPath'
 import { moviePhotoSize } from '../../utils/photoSizes'
+import { ResetButton } from '../ResetButton/ResetButton'
 
 type ResultProps = {
     commonMovies: Movie[]
     selectedActors: ActorWithMovies[]
+    setCommonMovies: React.Dispatch<React.SetStateAction<Array<Movie>>>
+    setAppState: React.Dispatch<React.SetStateAction<AppState>>
+    setSelectedActors: React.Dispatch<
+        React.SetStateAction<Array<ActorWithMovies>>
+    >
 }
 
-const Result: React.FC<ResultProps> = ({ commonMovies, selectedActors }) => {
+const Result: React.FC<ResultProps> = ({
+    commonMovies,
+    selectedActors,
+    setCommonMovies,
+    setAppState,
+    setSelectedActors,
+}) => {
     commonMovies.sort(
         (a, b) => Date.parse(b.releaseDate) - Date.parse(a.releaseDate)
     )
@@ -54,6 +66,11 @@ const Result: React.FC<ResultProps> = ({ commonMovies, selectedActors }) => {
                     )
                 })}
             </SimpleGrid>
+            <ResetButton
+                setAppState={setAppState}
+                setCommonMovies={setCommonMovies}
+                setSelectedActors={setSelectedActors}
+            />
         </VStack>
     )
 }
