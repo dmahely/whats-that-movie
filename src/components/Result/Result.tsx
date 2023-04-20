@@ -49,6 +49,7 @@ const Result: React.FC<ResultProps> = ({ commonMovies, selectedActors }) => {
                                     moviePhotoSize
                                 )}
                                 alt={`${title} poster`}
+                                fallbackSrc="https://via.placeholder.com/250"
                             />
                             <Text>
                                 {title} ({releaseDate.substring(0, 4)})
