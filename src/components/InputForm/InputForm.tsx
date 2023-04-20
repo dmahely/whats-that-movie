@@ -1,7 +1,9 @@
-import { Input, Flex } from '@chakra-ui/react'
+import { Input, VStack } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import { Actor } from '../../types/types'
 import { fetchActors } from '../../apis/fetchActors'
+import { useState } from 'react'
+import { Loading } from '../Loading/Loading'
 
 type InputFormProps = {
     setActors: React.Dispatch<React.SetStateAction<Actor[]>>
@@ -14,6 +16,8 @@ const InputForm: React.FC<InputFormProps> = ({
     inputValue,
     setInputValue,
 }) => {
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+
     const handleOnChange = async (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
@@ -23,11 +27,13 @@ const InputForm: React.FC<InputFormProps> = ({
 
     const getActorResult = async (inputText: string) => {
         const actorsResult = await fetchActors(inputText)
+        setIsLoading(false)
         setActors(actorsResult)
     }
 
     useEffect(() => {
         if (inputValue.length > 3) {
+            setIsLoading(true)
             const getData = setTimeout(() => {
                 getActorResult(inputValue)
             }, 1000)
@@ -40,14 +46,15 @@ const InputForm: React.FC<InputFormProps> = ({
     }, [inputValue])
 
     return (
-        <Flex display-name="input-flex">
+        <VStack display-name="input-vstack">
             <Input
                 w="350px"
                 placeholder="Enter an actor's name"
                 value={inputValue}
                 onChange={handleOnChange}
             />
-        </Flex>
+            {isLoading && <Loading />}
+        </VStack>
     )
 }
 
