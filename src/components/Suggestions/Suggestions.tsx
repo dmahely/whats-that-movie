@@ -40,19 +40,20 @@ const Suggestions: React.FC<SuggestionsProps> = ({
     }
 
     return (
-        <VStack spacing="0" alignItems="start" w="250px">
+        <VStack spacing="0" alignItems="start" w="350px">
             {actors.map((actor, index) => (
                 <HStack
                     className="actor-suggestion"
                     cursor="pointer"
                     borderRadius="10px"
-                    p="2"
+                    p="1"
                     w="100%"
+                    h="60px"
                     onClick={() => handleOnClick(index)}
                     key={actor.id}
                 >
                     <Image
-                        boxSize="30px"
+                        boxSize="45px"
                         src={getFullPhotoPath(actor.photo, actorPhotoSize)}
                         alt={`${actor.name}`}
                         fallbackSrc="https://via.placeholder.com/30"

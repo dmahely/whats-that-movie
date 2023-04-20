@@ -3,7 +3,7 @@ import image from '../../assets/movie_night.svg'
 
 const Description = () => {
     return (
-        <VStack display-name="description-vstack" mb={5}>
+        <VStack display-name="description-vstack" mb={3}>
             <Flex gap={4} flexDir="column" w="100%" alignItems="center">
                 <Image
                     alt="Movie night"

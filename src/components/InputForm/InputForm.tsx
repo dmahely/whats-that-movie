@@ -42,7 +42,7 @@ const InputForm: React.FC<InputFormProps> = ({
     return (
         <Flex display-name="input-flex">
             <Input
-                w="250px"
+                w="350px"
                 placeholder="Enter an actor's name"
                 value={inputValue}
                 onChange={handleOnChange}
