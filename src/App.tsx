@@ -5,8 +5,7 @@ import { Description } from './components/Description'
 import { InputForm } from './components/InputForm'
 import { Suggestions } from './components/Suggestions'
 import { Selections } from './components/Selections'
-import { ChakraProvider, VStack, Center, Flex, Heading } from '@chakra-ui/react'
-import { Footer } from './components/Footer'
+import { ChakraProvider, VStack, Flex, Heading } from '@chakra-ui/react'
 import { ResultButton } from './components/ResultButton'
 import { Result } from './components/Result'
 
@@ -77,9 +76,6 @@ const App = () => {
                         />
                     )}
                 </VStack>
-                <Center display-name="footer-container">
-                    <Footer />
-                </Center>
             </Flex>
         </ChakraProvider>
     )
