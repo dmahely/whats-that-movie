@@ -1,11 +1,11 @@
 import React from 'react'
 import { fetchMovieCredits } from '../../apis/fetchMovieCredits'
-import { nanoid } from 'nanoid'
 import { HStack, VStack, Text, Image } from '@chakra-ui/react'
 import './Suggestions.css'
 import { getFullPhotoPath } from '../../utils/getFullPhotoPath'
 import { actorPhotoSize } from '../../utils/photoSizes'
 import { ActorWithMovies, Actor } from '../../types/types'
+import { getRandomId } from '../../utils/getRandomId'
 
 type SuggestionsProps = {
     actors: Actor[]
@@ -25,7 +25,7 @@ const Suggestions: React.FC<SuggestionsProps> = ({
     const handleOnClick = async (index: number) => {
         const movies = await fetchMovieCredits(actors[index].id)
         const newSelection: ActorWithMovies = {
-            id: parseInt(nanoid()),
+            id: getRandomId(),
             actor: actors[index],
             movies,
         }
