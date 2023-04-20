@@ -11,7 +11,7 @@ import { ResultButton } from './components/ResultButton'
 import { Result } from './components/Result'
 
 export type Movie = {
-    id: string
+    id: number
     posterPath: string
     title: string
     releaseDate: string
