@@ -1,5 +1,5 @@
 import { Box, Button } from '@chakra-ui/react'
-import { ActorWithMovies, AppState, Movie } from '../../App'
+import { ActorWithMovies, AppState, Movie } from '../../types/types'
 import { findCommonMovies } from '../../utils/findCommonMovies'
 
 type ResultButtonProps = {

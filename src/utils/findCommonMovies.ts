@@ -1,4 +1,4 @@
-import { ActorWithMovies, Movie } from '../App'
+import { ActorWithMovies, Movie } from '../types/types'
 
 const findCommonMovies = (actorsWithMovies: ActorWithMovies[]) => {
     const allMoviesArr = actorsWithMovies.flatMap((actor) => actor.movies)

@@ -1,5 +1,5 @@
 import { Tag, TagLabel, TagCloseButton, Flex } from '@chakra-ui/react'
-import { ActorWithMovies } from '../../App'
+import { ActorWithMovies } from '../../types/types'
 
 type SelectionsProps = {
     selectedActors: ActorWithMovies[]
@@ -10,7 +10,7 @@ const Selections: React.FC<SelectionsProps> = ({
     selectedActors,
     setSelectedActors,
 }) => {
-    const removeSelection = (actorId: string) => {
+    const removeSelection = (actorId: number) => {
         const index = selectedActors.findIndex((actor) => actor.id === actorId)
 
         const updatedSelectedActors = [...selectedActors]

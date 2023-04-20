@@ -1,31 +1,13 @@
 import React, { useState } from 'react'
-import { Actor } from './apis/fetchActors'
 import './App.css'
-import { Description } from './components/Description'
-import { InputForm } from './components/InputForm'
-import { Suggestions } from './components/Suggestions'
-import { Selections } from './components/Selections'
+import { Description } from '../Description'
+import { InputForm } from '../InputForm'
+import { Suggestions } from '../Suggestions'
+import { Selections } from '../Selections'
 import { ChakraProvider, VStack, Flex, Heading } from '@chakra-ui/react'
-import { ResultButton } from './components/ResultButton'
-import { Result } from './components/Result'
-
-export type Movie = {
-    id: number
-    posterPath: string
-    title: string
-    releaseDate: string
-}
-
-export type ActorWithMovies = {
-    id: string
-    actor: Actor
-    movies: Movie[]
-}
-
-export enum AppState {
-    INITIAL,
-    RESULT,
-}
+import { ResultButton } from '../ResultButton'
+import { Result } from '../Result'
+import { ActorWithMovies, AppState, Movie, Actor } from '../../types/types'
 
 const App = () => {
     const [actors, setActors] = useState<Array<Actor>>([])
@@ -81,4 +63,4 @@ const App = () => {
     )
 }
 
-export default App
+export { App }

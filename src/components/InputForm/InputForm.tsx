@@ -1,6 +1,6 @@
 import { Input, Flex } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
-import { Actor } from '../../apis/fetchActors'
+import { Actor } from '../../types/types'
 import { fetchActors } from '../../apis/fetchActors'
 
 type InputFormProps = {

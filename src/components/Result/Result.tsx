@@ -1,5 +1,5 @@
 import { Image, SimpleGrid, Text, VStack } from '@chakra-ui/react'
-import { ActorWithMovies, Movie } from '../../App'
+import { ActorWithMovies, Movie } from '../../types/types'
 import { getFullPhotoPath } from '../../utils/getFullPhotoPath'
 import { moviePhotoSize } from '../../utils/photoSizes'
 

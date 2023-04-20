@@ -1,8 +1,4 @@
-export type Actor = {
-    id: string
-    name: string
-    photo: string
-}
+import { Actor } from '../types/types'
 
 const fetchActors = async (input: string) => {
     const data = await (
