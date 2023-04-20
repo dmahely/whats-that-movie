@@ -1,4 +1,4 @@
-import { HStack, Image, Text, VStack } from '@chakra-ui/react'
+import { Image, SimpleGrid, Text, VStack } from '@chakra-ui/react'
 import { ActorWithMovies, Movie } from '../../App'
 import { getFullPhotoPath } from '../../utils/getFullPhotoPath'
 import { moviePhotoSize } from '../../utils/photoSizes'
@@ -26,16 +26,17 @@ const Result: React.FC<ResultProps> = ({ commonMovies, selectedActors }) => {
                 b
         )
 
+    const movies = commonMovies.length > 1 ? 'movies' : 'movie'
+
     return (
         <VStack spacing="2" display-name="results-flex">
             <Text>
-                {actorNames} have {commonMovies.length} movies in common!
+                {actorNames} have {commonMovies.length} {movies} in common!
             </Text>
-            <HStack
-                flexWrap="wrap"
-                justifyContent="center"
-                spacing="1"
-                display-name="movie-results-vstack"
+            <SimpleGrid
+                columns={3}
+                spacing={2}
+                display-name="movie-results-grid"
             >
                 {commonMovies.map((movie) => {
                     const { id, posterPath, title, releaseDate } = movie
@@ -55,7 +56,7 @@ const Result: React.FC<ResultProps> = ({ commonMovies, selectedActors }) => {
                         </VStack>
                     )
                 })}
-            </HStack>
+            </SimpleGrid>
         </VStack>
     )
 }
