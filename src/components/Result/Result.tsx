@@ -28,13 +28,17 @@ const Result: React.FC<ResultProps> = ({
     const actorNames = selectedActors
         .map(({ actor }) => actor.name)
         .reduce(
-            (firstActor, secondActor, i, array) =>
-                firstActor +
-                (i < array.length - 1 ? ', ' : ' and ') +
-                secondActor
+            (a, b, i, array) =>
+                a +
+                (i < array.length - 1
+                    ? ', '
+                    : array.length > 2
+                    ? ', and '
+                    : ' and ') +
+                b
         )
 
-    const movies = commonMovies.length === 1 ? 'movie' : 'movies'
+    const movies = commonMovies.length > 1 ? 'movies' : 'movie'
 
     return (
         <VStack spacing="2" display-name="results-flex">

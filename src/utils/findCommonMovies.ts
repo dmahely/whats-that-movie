@@ -5,11 +5,11 @@ const findCommonMovies = (actorsWithMovies: ActorWithMovies[]) => {
     const movieIdsSet = new Set(allMoviesArr.map((movie) => movie.id))
 
     const commonMovieIds: number[] = []
-    for (const movieId of Array.from(movieIdsSet)) {
-        if (movieIdsSet.has(movieId)) {
-            movieIdsSet.delete(movieId)
+    for (const movie of allMoviesArr) {
+        if (movieIdsSet.has(movie.id)) {
+            movieIdsSet.delete(movie.id)
         } else {
-            commonMovieIds.push(movieId)
+            commonMovieIds.push(movie.id)
         }
     }
 
