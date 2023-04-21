@@ -1,4 +1,4 @@
-import { Image, SimpleGrid, Text, VStack } from '@chakra-ui/react'
+import { Image, Link, SimpleGrid, Text, VStack } from '@chakra-ui/react'
 import { ActorWithMovies, Movie, AppState } from '../../types/types'
 import { getFullPhotoPath } from '../../utils/getFullPhotoPath'
 import { moviePhotoSize } from '../../utils/photoSizes'
@@ -43,12 +43,22 @@ const Result: React.FC<ResultProps> = ({
     return (
         <VStack spacing="2" display-name="results-flex">
             <Text>
-                {actorNames} have {commonMovies.length} {movies} in common!
+                {actorNames} have starred in {commonMovies.length} {movies}{' '}
+                together according to{' '}
+                <Link
+                    href="https://www.themoviedb.org"
+                    isExternal
+                    fontWeight="bold"
+                >
+                    TMDB
+                </Link>
+                .
             </Text>
             <SimpleGrid
                 columns={3}
                 spacing={2}
                 display-name="movie-results-grid"
+                m={1}
             >
                 {commonMovies.map((movie) => {
                     const { id, posterPath, title, releaseDate } = movie
@@ -63,7 +73,7 @@ const Result: React.FC<ResultProps> = ({
                                 alt={`${title} poster`}
                                 fallbackSrc="https://via.placeholder.com/250"
                             />
-                            <Text>
+                            <Text maxW={235}>
                                 {title} ({releaseDate.substring(0, 4)})
                             </Text>
                         </VStack>
