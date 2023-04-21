@@ -1,6 +1,6 @@
 import { Actor } from '../types/types'
 
-const fetchActors = async (input: string) => {
+const fetchActors = async (input: string): Promise<Actor[]> => {
     const data = await (
         await fetch(
             `${process.env.REACT_APP_BASE_URL}/search/person?api_key=${process.env.REACT_APP_API_TOKEN}&query=${input}`

@@ -46,6 +46,7 @@ const App = () => {
                                 inputValue={inputValue}
                                 setInputValue={setInputValue}
                                 setActors={setActors}
+                                selectedActors={selectedActors}
                             />
                             <Suggestions
                                 actors={actors}

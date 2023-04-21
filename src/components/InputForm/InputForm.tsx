@@ -1,6 +1,6 @@
 import { Input, VStack } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
-import { Actor } from '../../types/types'
+import { Actor, ActorWithMovies } from '../../types/types'
 import { fetchActors } from '../../apis/fetchActors'
 import { useState } from 'react'
 import { Loading } from '../Loading/Loading'
@@ -9,12 +9,14 @@ type InputFormProps = {
     setActors: React.Dispatch<React.SetStateAction<Actor[]>>
     inputValue: string
     setInputValue: React.Dispatch<React.SetStateAction<string>>
+    selectedActors: ActorWithMovies[]
 }
 
 const InputForm: React.FC<InputFormProps> = ({
     setActors,
     inputValue,
     setInputValue,
+    selectedActors,
 }) => {
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -25,10 +27,24 @@ const InputForm: React.FC<InputFormProps> = ({
         setInputValue(inputText)
     }
 
+    const filterSelectedActors = (
+        actorsResult: Actor[],
+        selectedActors: ActorWithMovies[]
+    ) => {
+        const selectedActorsIds = selectedActors.map((actor) => actor.actor.id)
+        return actorsResult.filter(
+            (actor) => !selectedActorsIds.includes(actor.id)
+        )
+    }
+
     const getActorResult = async (inputText: string) => {
         const actorsResult = await fetchActors(inputText)
         setIsLoading(false)
-        setActors(actorsResult)
+        const filteredActors = filterSelectedActors(
+            actorsResult,
+            selectedActors
+        )
+        setActors(filteredActors)
     }
 
     useEffect(() => {
