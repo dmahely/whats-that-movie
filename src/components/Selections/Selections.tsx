@@ -19,15 +19,15 @@ const Selections: React.FC<SelectionsProps> = ({
     }
 
     return (
-        <Flex display-name="selections-flex" gap={1}>
+        <Flex flexFlow="row wrap" display-name="selections-flex" gap={1} p={1}>
             {selectedActors.map((selection) => {
                 return (
                     <Tag
                         size="lg"
                         key={selection.id}
                         borderRadius="full"
-                        variant="solid"
-                        colorScheme="blackAlpha"
+                        variant="subtle"
+                        colorScheme="pink"
                     >
                         <TagLabel>{selection.actor.name}</TagLabel>
                         <TagCloseButton

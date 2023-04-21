@@ -5,13 +5,8 @@ const Description = () => {
     return (
         <VStack display-name="description-vstack" mb={3}>
             <Flex gap={4} flexDir="column" w="100%" alignItems="center">
-                <Image
-                    alt="Movie night"
-                    boxSize="150px"
-                    className="hero-image"
-                    src={image}
-                />
-                <Text className="description" w="50vw">
+                <Image alt="Movie night" boxSize="150px" src={image} />
+                <Text width={{ md: '50%', sm: '70%' }}>
                     <Highlight
                         query="all the actors"
                         styles={{

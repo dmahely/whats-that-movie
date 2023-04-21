@@ -5,6 +5,8 @@ const Loading = () => {
     return (
         <Box display-name="loading-hstack">
             <span className="loading-emoji">🍿</span>
+            <span className="loading-emoji">🍿</span>
+            <span className="loading-emoji">🍿</span>
         </Box>
     )
 }

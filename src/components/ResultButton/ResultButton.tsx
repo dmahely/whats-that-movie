@@ -21,8 +21,12 @@ const ResultButton: React.FC<ResultButtonProps> = ({
     return (
         <Box>
             {selectedActors.length > 1 && (
-                <Button colorScheme="purple" onClick={handleOnClick}>
-                    Find movies in common
+                <Button
+                    colorScheme="purple"
+                    onClick={handleOnClick}
+                    variant="ghost"
+                >
+                    Find that movie →
                 </Button>
             )}
         </Box>

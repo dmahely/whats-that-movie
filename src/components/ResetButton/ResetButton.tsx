@@ -21,8 +21,12 @@ const ResetButton: React.FC<ResetButtonProps> = ({
     }
     return (
         <Box>
-            <Button colorScheme="purple" onClick={handleOnClick}>
-                Try this again
+            <Button
+                colorScheme="purple"
+                onClick={handleOnClick}
+                variant="ghost"
+            >
+                Try again ↺
             </Button>
         </Box>
     )

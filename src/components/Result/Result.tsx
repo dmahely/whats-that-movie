@@ -28,20 +28,16 @@ const Result: React.FC<ResultProps> = ({
     const actorNames = selectedActors
         .map(({ actor }) => actor.name)
         .reduce(
-            (a, b, i, array) =>
-                a +
-                (i < array.length - 1
-                    ? ', '
-                    : array.length > 2
-                    ? ', and '
-                    : ' and ') +
-                b
+            (firstActor, secondActor, i, array) =>
+                firstActor +
+                (i < array.length - 1 ? ', ' : ' and ') +
+                secondActor
         )
 
     const movies = commonMovies.length > 1 ? 'movies' : 'movie'
 
     return (
-        <VStack spacing="2" display-name="results-flex">
+        <VStack spacing={2} display-name="results-vstack" pb={3}>
             <Text>
                 {actorNames} have starred in {commonMovies.length} {movies}{' '}
                 together according to{' '}
@@ -54,11 +50,15 @@ const Result: React.FC<ResultProps> = ({
                 </Link>
                 .
             </Text>
+            <ResetButton
+                setAppState={setAppState}
+                setCommonMovies={setCommonMovies}
+                setSelectedActors={setSelectedActors}
+            />
             <SimpleGrid
                 columns={3}
                 spacing={2}
                 display-name="movie-results-grid"
-                m={1}
             >
                 {commonMovies.map((movie) => {
                     const { id, posterPath, title, releaseDate } = movie
@@ -72,19 +72,19 @@ const Result: React.FC<ResultProps> = ({
                                 )}
                                 alt={`${title} poster`}
                                 fallbackSrc="https://via.placeholder.com/250"
+                                borderRadius="10px"
                             />
                             <Text maxW={235}>
-                                {title} ({releaseDate.substring(0, 4)})
+                                {title} (
+                                {releaseDate
+                                    ? releaseDate.substring(0, 4)
+                                    : 'Unknown'}
+                                )
                             </Text>
                         </VStack>
                     )
                 })}
             </SimpleGrid>
-            <ResetButton
-                setAppState={setAppState}
-                setCommonMovies={setCommonMovies}
-                setSelectedActors={setSelectedActors}
-            />
         </VStack>
     )
 }

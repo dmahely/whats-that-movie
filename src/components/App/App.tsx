@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import './App.css'
 import { Description } from '../Description'
 import { InputForm } from '../InputForm'
@@ -20,7 +20,12 @@ const App = () => {
 
     return (
         <ChakraProvider>
-            <Flex display-name="app-container-flex" flexDir="column" w="100%">
+            <Flex
+                display-name="app-container-flex"
+                flexDir="column"
+                width="100%"
+                px={1}
+            >
                 <VStack display-name="app-vstack" className="App" minH="100vh">
                     <Heading as="h1" m="2">
                         What's that movie?
